@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@layer base{
+    h1, h2, h3{
+        @apply font-bold
+    }
+}
+
+
+@layer components{
+    .btn{
+        @apply bg-red-200 px-8 rounded-full max-w-20
+    }
+}

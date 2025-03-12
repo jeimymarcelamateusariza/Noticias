@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./output.css" rel="stylesheet">
+
+    <!--Iconos-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+    <h1 class="text-center text-3xl my-5">Noticias</h1>
+    <h2 class="text-center text-xl mb-7">Encuentra las noticias de tu interes</h2>
+    <!--Buscar-->
+    <div class="border-y">
+        <div class="flex p-3 justify-between items-center">
+            <div>
+                <label>Idioma</label>
+                <select id="idioma">
+                    <option value="">Esp</option>
+                    <option value="">Ing</option>
+                </select>
+            </div>
+            <form action="">
+                <input type="text" placeholder="Buscar por título, palabras claves" id="noticia"
+                    class="border rounded-full w-64 text-sm text-center h-10">
+            </form>
+            <div>
+                <label>País</label>
+                <select id="pais">
+                    <option value=""></option>
+                    <option value="">Ingles</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!--Banner-->
+
+    <div class="border-b flex flex-col md:flex-row gap-2">
+        <div class="bg-gray-200  md:border-x md:w-2/6 p-3">
+            <h3>Continuar leyendo</h3>
+            <div class="flex flex-col gap-2">
+                <div id="guardadas"></div>
+            </div>
+        </div>
+        <div class="md:w-3/6 p-3">
+            <h3>Recomendación</h3>
+            <div class="flex" id="recomendacion">
+                
+            </div>
+        </div>
+        <div class="bg-gray-200 md:border-x md:w-1/6 p-3">
+            <p class="font-bold text-4xl"><span><i class="fa-solid fa-quote-left"></i></span>Enterate de todo lo que pasa en el mundo</p>
+        </div>
+    </div>
+
+    <!--Resultados-->
+    <div class="border-b">
+        <h2 class="text-center text-2xl py-3">Noticias</h2>
+    </div>
+
+    <div id="resultados"></div>
+</body>
+
+</html>
