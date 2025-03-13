@@ -18,7 +18,7 @@
     <h2 class="text-center text-xl mb-7">Encuentra las noticias de tu interes</h2>
     <!--Buscar-->
     <div class="border-y">
-        <div class="flex flex-col md:flex-row gap-2 h-20 justify-between items-center">
+        <div class="flex flex-col md:flex-row gap-2 h-32 md:h-20 justify-around items-center">
             <div>
                 <label>Idioma</label>
                 <select id="idioma">
@@ -36,7 +36,7 @@
             <div>
                 <label>País</label>
                 <select id="pais">
-                    <option value=""></option>
+                    <option value="">Español</option>
                     <option value="">Ingles</option>
                 </select>
             </div>
@@ -46,7 +46,7 @@
     <!--Banner-->
 
     <div class="border-b flex flex-col md:flex-row gap-2">
-        <div class="bg-gray-200  md:border-x md:w-2/6 p-3">
+        <div class="bg-gray-200  md:border-x md:w-2/6 text-center">
             <h3>Continuar leyendo</h3>
             <div class="flex flex-col gap-2">
                 <div id="guardadas"></div>
@@ -59,7 +59,7 @@
             </div>
         </div>
         <div class="bg-gray-200 md:border-x md:w-1/6 p-3">
-            <p class="font-bold text-4xl"><span><i class="fa-solid fa-quote-left"></i></span>Enterate de todo lo que
+            <p class="font-bold text-3xl text-center"><span><i class="fa-solid fa-quote-left"></i></span>Enterate de todo lo que
                 pasa en el mundo</p>
         </div>
     </div>
@@ -69,7 +69,7 @@
         <h2 class="text-center text-2xl py-3">Noticias</h2>
     </div>
 
-    <div id="resultados"></div>
+    <div id="resultado" class="grid md:grid-cols-2"> </div>    
 
     <!--Script-->
     <script src="app.js"></script>
