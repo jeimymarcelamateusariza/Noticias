@@ -4,6 +4,9 @@ const guardadas = document.querySelector('#guardadas')
 
 document.addEventListener("DOMContentLoaded", () => {
     formulario.addEventListener('submit', validarFormulario);
+
+    //Mostrar las noticias que previamente fueron guardadas en localStorage
+    mostrarGuardadas();
 })
 
 
@@ -48,7 +51,6 @@ function buscarNoticias() {
 
 }
 
-
 function mostrarNoticias(articulos) {
     //iterar en cada noticia
     articulos.forEach(articulo => {
@@ -62,7 +64,7 @@ function mostrarNoticias(articulos) {
         img.classList.add('h-44', 'w-40', 'rounded-2xl')
         img.src = image;
         img.alt = 'Imagen de la noticia'
-        
+
         //Cuerpo
         const divCuerpo = document.createElement('DIV');
         divCuerpo.classList.add('flex', 'flex-col', 'gap-2');
@@ -74,11 +76,11 @@ function mostrarNoticias(articulos) {
         heading.textContent = title;
 
         const btnGuardar = document.createElement('BUTTON');
-        btnGuardar.type= 'button';
+        btnGuardar.type = 'button';
         const icono = document.createElement('I');
-        
+
         icono.classList.add('fa-regular', 'fa-heart', 'font-bold');
-        btnGuardar.onclick = function (){
+        btnGuardar.onclick = function () {
             guardarNoticia({
                 id: publishedAt,
                 titulo: title,
@@ -113,7 +115,38 @@ function mostrarNoticias(articulos) {
     });
 }
 
-function guardarNoticia(articulo){
-    const favorita = JSON.parse(localStorage.getItem('id'))?? [];
+function guardarNoticia(articulo) {
+    const favorita = JSON.parse(localStorage.getItem('id')) ?? [];
     localStorage.setItem('id', JSON.stringify([...favorita, articulo]));
+}
+
+function mostrarGuardadas(){
+    const favoritas = JSON.parse(localStorage.getItem('id')) ?? [];
+
+    favoritas.map((item)=>{
+        //Inyectar en el html
+        const divGuardada = document.createElement('DIV');
+        divGuardada.classList.add('flex', 'justify-between', 'py-2');
+
+        const tituloGuardada = document.createElement('A');
+        tituloGuardada.classList.add('text-sm', 'hover:underline');
+        tituloGuardada.textContent = item.titulo;
+        tituloGuardada.href = item.url;
+
+        const btnEliminar = document.createElement('BUTTON');
+        btnEliminar.type = 'button';
+        const icono = document.createElement('I');
+        icono.classList.add('fa-solid', 'fa-xmark', 'font-bold');
+        btnEliminar.onclick = function () {
+            elimiarNoticia(item.id);
+        }
+
+        //Agregar al div guardada
+        guardadas.appendChild(divGuardada);
+
+        divGuardada.appendChild(tituloGuardada);
+        divGuardada.appendChild(btnEliminar);
+        btnEliminar.appendChild(icono);
+    })
+    
 }

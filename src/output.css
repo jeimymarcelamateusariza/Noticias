@@ -245,6 +245,9 @@
   .justify-around {
     justify-content: space-around;
   }
+  .justify-between {
+    justify-content: space-between;
+  }
   .gap-2 {
     gap: calc(var(--spacing) * 2);
   }
@@ -266,18 +269,11 @@
     border-bottom-style: var(--tw-border-style);
     border-bottom-width: 1px;
   }
-  .border-l {
-    border-left-style: var(--tw-border-style);
-    border-left-width: 1px;
-  }
   .bg-gray-200 {
     background-color: var(--color-gray-200);
   }
   .bg-gray-300 {
     background-color: var(--color-gray-300);
-  }
-  .bg-red-500 {
-    background-color: var(--color-red-500);
   }
   .p-2 {
     padding: calc(var(--spacing) * 2);
@@ -288,11 +284,11 @@
   .px-2 {
     padding-inline: calc(var(--spacing) * 2);
   }
+  .py-2 {
+    padding-block: calc(var(--spacing) * 2);
+  }
   .py-3 {
     padding-block: calc(var(--spacing) * 3);
-  }
-  .py-9 {
-    padding-block: calc(var(--spacing) * 9);
   }
   .text-center {
     text-align: center;
@@ -334,6 +330,13 @@
     outline-style: var(--tw-outline-style);
     outline-width: 1px;
   }
+  .hover\:underline {
+    &:hover {
+      @media (hover: hover) {
+        text-decoration-line: underline;
+      }
+    }
+  }
   .focus\:outline-none {
     &:focus {
       --tw-outline-style: none;
@@ -370,20 +373,10 @@
       flex-direction: row;
     }
   }
-  .md\:gap-4 {
-    @media (width >= 48rem) {
-      gap: calc(var(--spacing) * 4);
-    }
-  }
   .md\:border-x {
     @media (width >= 48rem) {
       border-inline-style: var(--tw-border-style);
       border-inline-width: 1px;
-    }
-  }
-  .md\:text-left {
-    @media (width >= 48rem) {
-      text-align: left;
     }
   }
 }
