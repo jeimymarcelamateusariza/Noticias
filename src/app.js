@@ -1,5 +1,6 @@
 const resultado = document.querySelector("#resultado");
-const formulario = document.querySelector('#formulario')
+const formulario = document.querySelector('#formulario');
+const guardadas = document.querySelector('#guardadas')
 
 document.addEventListener("DOMContentLoaded", () => {
     formulario.addEventListener('submit', validarFormulario);
@@ -49,13 +50,13 @@ function buscarNoticias() {
 
 
 function mostrarNoticias(articulos) {
-    console.log(articulos);
     //iterar en cada noticia
     articulos.forEach(articulo => {
-        const { title, description, image, url } = articulo;
+        const { title, description, image, url, publishedAt } = articulo;
 
         const divNoticia = document.createElement('DIV');
-        divNoticia.classList.add('flex', 'flex-col', 'md:flex-row', 'gap-2', 'border-b', 'bg-gray-300', 'items-center', 'p-2')
+        divNoticia.classList.add('flex', 'flex-col', 'md:flex-row', 'gap-2', 'border-b', 'bg-gray-300', 'items-center', 'p-2');
+        divNoticia.id = publishedAt;
 
         const img = document.createElement('IMG');
         img.classList.add('h-44', 'w-40', 'rounded-2xl')
@@ -75,12 +76,15 @@ function mostrarNoticias(articulos) {
         const btnGuardar = document.createElement('BUTTON');
         btnGuardar.type= 'button';
         const icono = document.createElement('I');
+        
         icono.classList.add('fa-regular', 'fa-heart', 'font-bold');
         btnGuardar.onclick = function (){
-            guardarNoticia();
+            guardarNoticia({
+                id: publishedAt,
+                titulo: title,
+                url
+            });
         }
-
-        
 
         const descripcion = document.createElement('P');
         descripcion.textContent = description;
@@ -89,7 +93,6 @@ function mostrarNoticias(articulos) {
         btnVer.classList.add('btn')
         btnVer.textContent = 'Ver más';
         btnVer.href = url;
-
 
         //Agregar al html
         resultado.appendChild(divNoticia);
@@ -102,6 +105,7 @@ function mostrarNoticias(articulos) {
         //Agregar al divTitulo
         divTitulo.appendChild(heading);
         divTitulo.appendChild(btnGuardar);
+        btnGuardar.appendChild(icono);
 
         //Agregar al divNoticia
         divNoticia.appendChild(img);
@@ -109,6 +113,7 @@ function mostrarNoticias(articulos) {
     });
 }
 
-function guardarNoticia(){
-    console.log('Guardando..')
+function guardarNoticia(articulo){
+    const favorita = JSON.parse(localStorage.getItem('id'))?? [];
+    localStorage.setItem('id', JSON.stringify([...favorita, articulo]));
 }
